@@ -5,6 +5,8 @@
 
 ## 2. Installation
 
+  ##### python version은 3.11.5를 사용하였다
+
 ## 3. Execution
 
 ## 4. Usage Example
