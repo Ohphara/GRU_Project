@@ -1,6 +1,1 @@
-# Practice
-리드미 사용법 연습입니다
-
-한 칸 더 띄워주셔야합니다
-
-리드미 사용법 연습입니다.
+# Development of GRU-Based Anomaly Detection and Assessment Techniques in a Multisensory Program for ASD Children
