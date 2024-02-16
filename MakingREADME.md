@@ -69,7 +69,7 @@ landmark_names = [
 ]
 
 # 루트 디렉토리
-root_dir_template = "C:/Users/PJO/23kist/GRU_project_kist_PiljunOh/DB/AssessmentClip/HM/HM{}"
+root_dir_template = "YourProjectPATH/DB/AssessmentClip/HM/HM{}"
 
 # 클립 타입, HM 넘버, 클립 번호에 따라 파일 생성
 for hm_number in range(1, 9):
