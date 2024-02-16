@@ -15,10 +15,13 @@
 >본 연구는 Google Mediapipe의 Hand Gesture & Pose Detection을 통해 몸의 landmark들의 좌표 데이터를 input으로 받아서 .json파일로 DB에 저장해놓았다는 것을 전제로 하고 진행하였습니다. 앞선 연구들에선 비디오 분석에 Long Short-Term Memory(LSTM)을 활용하였으나, 본 연구에서는 LSTM과 성능은 비슷하면서도 더 가벼운 모델인 Gated Recurrent Unit(GRU)을 사용하여 진행하였습니다.
 >
 ## 프로그램 구성
+> ### 먼저 mediapipe로부터 추출된 landmark들의 json파일들로부터 delta dataset을 생성합니다.
 ![json파일로부터 dataset load](images/architecture1.jpg)
+> ### 이후 delta dataset에 라벨링을 한 이후 이를 GRU 모델 Train에 사용합니다.
 ![GRU 모델 train](images/architecture2.jpg)
+> ### 훈련된 GRU 모델을 바탕으로 대상 비디오에 대해 window를 움직여가며 inference 결과를 도출합니다
 ![GRU 모델 inference](images/architecture3.jpg)
-
+> ### 이후 도출된 결과를 predict_data에 json파일 형태로 저장합니다.
 
 
 ## 프로그램 Tree구조도
