@@ -2,10 +2,33 @@
 
 ## 1. Introduction
 #### 이 프로젝트는 크리모의 ASD 아동 대상 다감각 치료 프로그램에서 학습 아동의 성취도 평가(Hand Manipulation, Pose Stability, Bilateral Hand use) 와 프로그램 중 Abnormal Behavior(Hand Flapping, Body Rocking, Sit up & Sit down,,,) Detection을 위해 개발하였다.
+
+### 1)Objective
+
+### 2)Project Structure
+```
+        /YourProjectPATH
+        │
+        ├── main.py
+        ├── config.py
+        ├── requirements.txt
+        ├── src
+        │ ├── data_loader.py
+        │ ├── model_builder.py
+        │ ├── train.py
+        │ └── inference.py
+        └── DB
+        │ ├── AssessmentClip
+        │ │ ├── HM
+        │ │ └── PS
+        │ ├── DetectionClip
+        │ ├── TDvideos
+        │ └── ASDvideos
+```
+#### 3)
+
+#### 4)
 ---
-
-
-
 
 ## 2. Installation
 
