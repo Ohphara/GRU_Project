@@ -2,7 +2,7 @@
 
 ## 1. Introduction
 #### 이 프로젝트는 크리모의 ASD 아동 대상 다감각 치료 프로그램에서 학습 아동의 성취도 평가(Hand Manipulation, Pose Stability, Bilateral Hand use) 와 프로그램 중 Abnormal Behavior(Hand Flapping, Body Rocking, Sit up & Sit down,,,) Detection을 위해 개발하였다.
-
+---
 
 
 
@@ -131,22 +131,21 @@ for clipnumber in range(1, 6):  # Modified to iterate over clip numbers from 1 t
 ```
 
 #### 이제 프로젝트 내 코드들의 경로를 본인의 프로젝트 경로에 알맞게 수정해주면 코드를 실행시킬 준비가 끝났다
-
+---
 
 ## 3. Execution
 
-### 1) 초기 경로 설정
 
 
 
 
 
-
+---
 ## 4. Usage Example
 
 
 
 
 
-
+---
 ## 5. Lisence
