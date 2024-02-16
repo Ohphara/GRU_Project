@@ -1,0 +1,4 @@
+model_builder + train을 통해 가중치를 학습하고 이를 .pth 파일로 models에 저장
+이후 model_builder + inference를 통해 가중치를 불러와서 실행
+
+결국 .pth에는 모델의 가중치를 저장해 놓은 것.

@@ -1,0 +1,30 @@
+Project 소개
+ 자폐아를 위한 다감각 프로그램에서의 GRU 기반 Achievement evaluation 및 abnomaly detection 프로그램
+
+구성
+ DB: google mediapipe로 추출한 3차원 x,y,z 좌표가 .json으로 들어올 것이라 가정하였다
+     ASDVideos, TDVideos는 나중에 Inference의 대상이 되는 비디오이고 AssessmentClip은 Achievement evaluation을 위해, DetectionClip은 abnomaly detection을 훈련시키기 위해 존재한다.
+     일단 데이터가 없기에 정규분포를 따르도록 랜덤 변수를 생성하여 dummy data를 생성하였다.
+
+     
+ models: main.py에서 train된 가중치들을 models에 .pth에 저장한다.
+
+
+ predict_data: main.py에서 inference의 결과를 predict_data를 저장한다
+
+
+ src: data_loader.py은 DB로부터 데이터를 불러와서 프레임별 차분을 계산하고 라벨을 할당한다. train과 inference 모두 data_loader을 사용하여 데이터를 불러온다.
+      model_builder.py은 각각 model별 설정을 저장한다
+      train.py 모델을 훈련시키고 models에 .pth 파일로 저장한다
+      inference.py .pth파일을 불러와 video에 대해 sliding window를 통해 prediction을 수행한다
+
+
+ config.py
+
+ main.py: main.py를 통해 프로그램을 구동한다
+          dataset type을 설정하면 그에 해당하는 dataset들을 모두 불러와서 shuffle한 뒤 train한다. item 내부의 시계열 정보가 shuffle되진 않는다
+
+
+# 경로의 경우 project 상위 경로를 모두 지워서 다시 경로를 정해야 한다
+# hm의 경우 손 동작이 1~8까지 있는데, 아무 손 동작도 안 하고 있는 구간도 있을 수 있으므로 control data를 넣어서 훈련시켜야한다.
+# ps의 경우 ps가 3가지로 나뉠 수 있으므로 control data는 따로 필요하지 않다          
