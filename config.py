@@ -32,8 +32,8 @@ dataset_types = {
 
 # 루트 디렉토리 정의
 root_dirs = {
-    'hm': [f"/project/DB/AssessmentClip/HM/HM{i}" for i in range(1, 9)],
-    'ps': [f"/project/DB/AssessmentClip/PS/PS{i}" for i in range(1, 4)]
+    'hm': [f"/YourProjectPATH/DB/AssessmentClip/HM/HM{i}" for i in range(1, 9)],
+    'ps': [f"/YourProjectPATH/DB/AssessmentClip/PS/PS{i}" for i in range(1, 4)]
 }
 
 

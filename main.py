@@ -8,9 +8,9 @@ import torch
 import json
 
 # 모델을 저장할 경로를 지정합니다.
-MODEL_SAVE_DIR = '/project/models'
-TDVideos_path = '/project/DB/TDvideos'
-ASDVideos_path = '/project/DB/ASDvideos'
+MODEL_SAVE_DIR = '/YourProjectPATH/models'
+TDVideos_path = '/YourProjectPATH/DB/TDvideos'
+ASDVideos_path = '/YourProjectPATH/DB/ASDvideos'
 
 def main(mode):
     # 사용자가 선택한 모드에 따라 훈련 모드 또는 추론 모드를 실행합니다.
@@ -63,7 +63,7 @@ def execute_inference_mode():
 
     # 결과를 생성하고 JSON 파일로 저장합니다.
     results = generate_results(inference_dataset, inference_model)
-    filename = f'/project/predict_data/InferenceResult_{video_type.upper()}Video_{clip_number}_{dataset_type}.json'
+    filename = f'/YourProjectPATH/predict_data/InferenceResult_{video_type.upper()}Video_{clip_number}_{dataset_type}.json'
     with open(filename, 'w') as f:
         json.dump(results, f)
 
