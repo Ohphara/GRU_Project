@@ -9,34 +9,27 @@ ASD 아동 대상 다감각 치료 프로그램에 대한 평가와 이상행동
 ## 연구 방법
 본 연구에서는 Google Mediapipe의 Hand Gesture & Pose Detection에서 몸의 landmark들의 좌표 데이터를 input으로, output은 동영상에서의 성취도 평가 동작과 이상행동을 추출하는 것으로 설정하였다. 또한, 연구를 위한 프로젝트 구조는 아래와 같다.
 
+## 프로그램 구조
+    /YourProjectPATH
+    │
+    ├── main.py
+    ├── config.py
+    ├── requirements.txt
+    ├── src
+    │ ├── data_loader.py
+    │ ├── model_builder.py
+    │ ├── train.py
+    │ └── inference.py
+    └── DB
+    │ ├── AssessmentClip
+    │ │ ├── HM
+    │ │ └── PS
+    │ ├── DetectionClip
+    │ ├── TDvideos
+    │ └── ASDvideos
 
-
-### 2)Project Structure
-```
-        /YourProjectPATH
-        │
-        ├── main.py
-        ├── config.py
-        ├── requirements.txt
-        ├── src
-        │ ├── data_loader.py
-        │ ├── model_builder.py
-        │ ├── train.py
-        │ └── inference.py
-        └── DB
-        │ ├── AssessmentClip
-        │ │ ├── HM
-        │ │ └── PS
-        │ ├── DetectionClip
-        │ ├── TDvideos
-        │ └── ASDvideos
-```
-#### 3)
-
-#### 4)
----
-
-## 2. Installation
+## 설치 및 실행 방법
+본 연구를 진행하기 위한 환경 구축 및 실행 방법은 아래와 같다. 
 
 ### 1) 가상환경 생성
 
@@ -46,28 +39,28 @@ ASD 아동 대상 다감각 치료 프로그램에 대한 평가와 이상행동
 conda create --name 가상환경이름 python=3.11.5
 ```
 
-#### 이후 가상환경을 활성화 한다
+이후 가상환경을 활성화 한다
 
 ```Anaconda Prompt
 conda activate 가상환경이름
 ```
 
-#### 아래 명령을 따라 Pytorch module을 설치한다. 
+아래 명령을 따라 Pytorch module을 설치한다. 
 
-##### CPU 버전 : 
+CPU 버전 : 
 ```Anaconda Prompt
 conda install pytorch torchvision torchaudio cpuonly -c pytorch
 ```
-##### GPU 버전 (CUDA 지원이 있는 경우):
+GPU 버전 (CUDA 지원이 있는 경우):
 ```Anaconda Prompt
 conda install pytorch torchvision torchaudio cudatoolkit=11.1 -c pytorch
 ```
 
 ### 2) Model 동작 확인을 위한 dummy file 생성법
 
-#### 현재는 DB폴더에 .json 파일들이 비어있으므로, dummy data를 생성하여 모델의 동작을 확인하여야 한다.
+현재는 DB폴더에 .json 파일들이 비어있으므로, dummy data를 생성하여 모델의 동작을 확인하여야 한다.
 
-#### 일단 HM에 대해서 dummy data를 만드는 코드는 다음과 같다
+일단 HM에 대해서 dummy data를 만드는 코드는 다음과 같다
 
 ```
 import os
@@ -114,7 +107,7 @@ for hm_number in range(1, 9):
                     create_json_file(root_dir, videocliptype, i, userid, hand, landmarkname)
 ```
 
-#### Inference 실행을 위한 dummy data를 만드는 코드는 다음과 같다
+Inference 실행을 위한 dummy data를 만드는 코드는 다음과 같다
 
 ```
 import os
@@ -158,8 +151,6 @@ for clipnumber in range(1, 6):  # Modified to iterate over clip numbers from 1 t
         for landmarkname in landmark_names:
                 create_json_file(root_dir, videocliptype, clipnumber, userid, hand, landmarkname)
 ```
-
-#### 이제 프로젝트 내 코드들의 경로를 본인의 프로젝트 경로에 알맞게 수정해주면 코드를 실행시킬 준비가 끝났다
 ---
 
 ## 3. Execution
