@@ -5,7 +5,15 @@
 
 ## 2. Installation
 
+####1)파이썬 설치
+
+####2)pip torch
+
+####3)Model 동작 확인을 위한 dummy file 생성법
+
 ## 3. Execution
+
+####초기 경로 설정
 
 ## 4. Usage Example
 
