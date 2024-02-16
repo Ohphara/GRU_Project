@@ -16,13 +16,13 @@ Autism Spectrum Disorder(ASD)은 전 세계적으로 빠르게 증가하는 발�
 
 ## 4) 프로그램 구성
 ### (1) Architecture 
- ### 먼저 mediapipe로부터 추출된 landmark들의 json파일들로부터 delta dataset을 생성
+ ### mediapipe로부터 추출된 landmark들의 json파일들로부터 delta dataset을 생성
 ![json파일로부터 dataset load](images/architecture1.jpg)  
- ### 이후 delta dataset에 라벨링을 한 이후 이를 GRU 모델 Train에 사용
+ ### delta dataset에 라벨링을 한 이후 이를 GRU 모델 Train에 사용
 ![GRU 모델 train](images/architecture2.jpg)  
  ### 훈련된 GRU 모델을 바탕으로 대상 비디오에 대해 window를 움직여가며 inference 결과를 도출
 ![GRU 모델 inference](images/architecture3.jpg)  
- ### 이후 도출된 결과를 predict_data에 json파일 형태로 저장
+ ### 도출된 결과를 predict_data에 json파일 형태로 저장
 
 
 ### (2) 프로그램 Tree구조도
@@ -192,7 +192,7 @@ python main.py
 ---
 ## 6) Limitation 
 ##### 동영상에 대한 충분한 라벨데이터를 확보하기 어려워 실제 데이터로 GRU의 성능을 테스트 해볼 기회가 없었다. 또한 실제 데이터와 비교해볼 수 없었기 때문에 inference 이후 scoring 하는 metric이 정해지지 않았다
-##### 따라서 Reviewer의 부담을 덜기 위해 표본 클립을 추출하는 프로그램 개발을 진행하며 GRU 개발은 정지하였다.
+##### 따라서 Reviewer의 부담을 덜기 위해 표본 클립을 추출하는 프로그램 개발을 진행하였다.
 
 
 
