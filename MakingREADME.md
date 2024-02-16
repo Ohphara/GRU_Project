@@ -44,7 +44,7 @@ Autism Spectrum Disorder(ASD)은 전 세계적으로 빠르게 증가하는 발�
     │ ├── TDvideos
     │ └── ASDvideos
 
-## (3)프로그램 구조 설명
+### (3) 프로그램 구조 설명
 
 #### - `main.py`: 프로그램의 진입점입니다. 이 파일을 실행하여 모델 훈련 및 추론을 시작합니다.  
 #### - `config.py`: 프로그램 설정을 관리하는 파일입니다. 여기에서 경로, 하이퍼파라미터 등의 설정을 변경할 수 있습니다.  
@@ -60,7 +60,7 @@ Autism Spectrum Disorder(ASD)은 전 세계적으로 빠르게 증가하는 발�
 ####   - `AssessmentClip`, `DetectionClip`, `TDvideos`, `ASDvideos`: 각각 다른 종류의 비디오 클립들을 저장하는 폴더입니다. 
 
 
-## 4)설치 및 실행 방법
+## 5) 설치 및 실행 방법
 본 연구를 진행하기 위한 환경 구축 및 실행 방법은 아래와 같다. 
 
 ### (1) 가상환경 생성
@@ -184,13 +184,13 @@ for clipnumber in range(1, 6):  # Modified to iterate over clip numbers from 1 t
 ```
 ---
 
-## 5) Execution
+## 6) Execution
  ### main.py 실행
  ```Anaconda prompt
 python main.py
 ```
 ---
-## 6) Limitation 
+## 7) Limitation 
 ##### 동영상에 대한 충분한 라벨데이터를 확보하기 어려워 실제 데이터로 GRU의 성능을 테스트 해볼 기회가 없었다. 또한 실제 데이터와 비교해볼 수 없었기 때문에 inference 이후 scoring 하는 metric이 정해지지 않았다
 ##### 따라서 Reviewer의 부담을 덜기 위해 표본 클립을 추출하는 프로그램 개발을 진행하였다.
 
@@ -199,7 +199,7 @@ python main.py
 
 
 ---
-## 7) Lisence
+## 8) Lisence
 ## License for PyTorch
 
 PyTorch is provided under the terms of the BSD 3-Clause License. The following is a copy of the license:
@@ -220,7 +220,7 @@ Redistribution and use in source and binary forms, with or without modification,
 THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 
-## 8) Reference
+## 9) Reference
 1. Estes A, Munson J, Rogers SJ, Greenson J, Winter J, Dawson G. Long-term outcomes of early intervention in 6-year-old children with autism spectrum disorder. J Am Acad Child Adolesc Psychiatry 2015 Jul;54(7):580-587 [FREE Full text] doi: 10.1016/j.jaac.2015.04.005 [Medline: 26088663]
 2. Ko C, Lim JH, Hong J, Hong SB, Park YR. Development and Validation of a Joint Attention-Based Deep Learning System for Detection and Symptom Severity Assessment of Autism Spectrum Disorder. JAMA Netw Open. 2023 May 1;6(5):e2315174. doi: 10.1001/jamanetworkopen.2023.15174. Erratum in: JAMA Netw Open. 2023 Jul 3;6(7):e2324944. PMID: 37227727; PMCID: PMC10214037.
 3. Lakkapragada A, Kline A, Mutlu O, Paskov K, Chrisman B, Stockham N, Washington P, Wall D The Classification of Abnormal Hand Movement to Aid in Autism Detection: Machine Learning Study. JMIR Biomed Eng 2022;7(1):e33771
