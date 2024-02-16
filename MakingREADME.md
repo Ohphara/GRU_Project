@@ -1,6 +1,7 @@
 # GRU 기반 이상 탐지 및 평가 기법 개발: ASD 아동의 다감각 프로그램 적용
 
 ## 요약
+
     이 연구는 Creamo의 ASD 아동 대상 다감각 치료 프로그램에서 아동의 성취도 평가(Hand Manipulation, Pose Stability, Bilateral Hand use)와 프로그램 도중 이상행동(Hand Flapping, Body Rocking, Sit up & Sit down 등) 탐지를 위해 GRU 기반의 이상 탐지 및 평가 기법을 개발을 목적으로 진행하였습니다.
 
 ## 서론
