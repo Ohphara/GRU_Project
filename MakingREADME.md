@@ -1,13 +1,13 @@
 # GRU 기반 이상 탐지 및 평가 기법 개발: ASD 아동의 다감각 프로그램 적용
 
 ## 요약
-이 연구는 Creamo의 ASD 아동 대상 다감각 치료 프로그램에서 아동의 성취도 평가(Hand Manipulation, Pose Stability, Bilateral Hand use)와 프로그램 도중 이상행동(Hand Flapping, Body Rocking, Sit up & Sit down 등) 탐지를 위해 GRU 기반의 이상 탐지 및 평가 기법을 개발을 목적으로 진행하게 되었습다.
+이 연구는 Creamo의 ASD 아동 대상 다감각 치료 프로그램에서 아동의 성취도 평가(Hand Manipulation, Pose Stability, Bilateral Hand use)와 프로그램 도중 이상행동(Hand Flapping, Body Rocking, Sit up & Sit down 등) 탐지를 위해 GRU 기반의 이상 탐지 및 평가 기법을 개발을 목적으로 진행하였습니다.
 
 ## 서론
-Autism Spectrum Disorder은 전 세계적으로 빠르게 증가하는 발달 장애로 조기 치료와 개입을 통해 그 증세를 크게 완화시킬 수 있습니다[1]. 이에 따라, ASD 아동 대상 다감각 치료 프로그램에 대한 평가와 이상행동 탐지에 대한 필요성이 높아지고 있습니다. 그러나 ASD 아동에 대한 조기 진단과 치료에는 많은 시간이 소요되고, 환자 수의 증가와 진단 및 치료를 담당할 전문인력의 부족이 맞물려 많은 ASD 아동들이 제때 적절한 조치를 받지 못하는 상황으로 이어졌습니다. 이러한 배경 속에서 본 연구는 "Development and Validation of a Joint Attention-Based Deep Learning System for Detection and Symptom Severity Assessment of Autism Spectrum Disorder" 및 "The Classification of Abnormal Hand Movement to Aid in Autism Detection: Machine Learning Study" 논문을 참고하여 아동의 동영상 데이터를 분석하는 새로운 방법론을 제안하게 되었습니다. 
+Autism Spectrum Disorder은 전 세계적으로 빠르게 증가하는 발달 장애로 조기 치료와 개입을 통해 그 증세를 크게 완화시킬 수 있습니다[1]. 이에 따라, ASD 아동 대상 다감각 치료 프로그램에 대한 평가와 이상행동 탐지에 대한 필요성이 높아지고 있습니다. 그러나 ASD 아동에 대한 조기 진단과 치료에는 많은 시간이 소요되고, 환자 수의 증가와 진단 및 치료를 담당할 전문인력의 부족이 맞물려 많은 ASD 아동들이 제때 적절한 조치를 받지 못하는 상황으로 이어졌습니다. 이러한 배경 속에서 ASD의 진단 및 치료 인력의 부족 문제를 해결하고자 머신 러닝을 ASD 아동의 진단에 사용하려는 선행연구들이 있었고 이들을 바탕으로 연구를 진행하게 되었습니다. 먼저"Development and Validation of a Joint Attention-Based Deep Learning System for Detection and Symptom Severity Assessment of Autism Spectrum Disorder"[1]에서는 CNN-LSTM 구조를 기반으로 TD와 ASD 아동들의 video data를 분석하여 아동들의 ASD severity를 높은 정확도로 예측하는데 성공하였습니다. 또한 "The Classification of Abnormal Hand Movement to Aid in Autism Detection: Machine Learning Study"[3]에서는 Google mediapipe를 기반으로, ASD 아동들에게서 흔히 보여지는 이상행동인 Hand Clapping을 detect하는데 성공하였습니다. 이러한 선행 연구들을 바탕으로 머신러닝을 기반으로한 ASD 아동들의 성취도 평가와 이상행동 탐지의 가능성을 확인하였고 이를 Creamo에서도 사용할 수 있게 만들고자 개발을 시작하였습니다.
 
 ## 연구 방법
-본 연구에서는 Google Mediapipe의 Hand Gesture & Pose Detection에서 몸의 landmark들의 좌표 데이터를 input으로, output은 동영상에서의 성취도 평가 동작과 이상행동을 추출하는 것으로 설정하였다. 또한, 연구를 위한 프로젝트 구조는 아래와 같다.
+본 연구에서는 Google Mediapipe의 Hand Gesture & Pose Detection에서 몸의 landmark들의 좌표 데이터를 input으로, output은 동영상에서의 성취도 평가 동작과 이상행동을 추출하는 것으로 설정하였다. 또한, 연구를 위한 프로젝트 구조는 아래와 같습니다.
 
 ## 프로그램 구조
     /YourProjectPATH
@@ -27,6 +27,8 @@ Autism Spectrum Disorder은 전 세계적으로 빠르게 증가하는 발달 �
     │ ├── DetectionClip
     │ ├── TDvideos
     │ └── ASDvideos
+
+    
 
 ## 설치 및 실행 방법
 본 연구를 진행하기 위한 환경 구축 및 실행 방법은 아래와 같다. 
@@ -171,4 +173,7 @@ for clipnumber in range(1, 6):  # Modified to iterate over clip numbers from 1 t
 ## 5. Lisence
 
 ## 6. Reference
-1. Estes A, Munson J, Rogers SJ, Greenson J, Winter J, Dawson G. Long-term outcomes of early intervention in 6-year-old children with autism spectrum disorder. J Am Acad Child Adolesc Psychiatry 2015 Jul;54(7):580-587 [FREE Full text] [doi: 10.1016/j.jaac.2015.04.005] [Medline: 26088663]
+1. Estes A, Munson J, Rogers SJ, Greenson J, Winter J, Dawson G. Long-term outcomes of early intervention in 6-year-old children with autism spectrum disorder. J Am Acad Child Adolesc Psychiatry 2015 Jul;54(7):580-587 [FREE Full text] doi: 10.1016/j.jaac.2015.04.005 [Medline: 26088663]
+2. Ko C, Lim JH, Hong J, Hong SB, Park YR. Development and Validation of a Joint Attention-Based Deep Learning System for Detection and Symptom Severity Assessment of Autism Spectrum Disorder. JAMA Netw Open. 2023 May 1;6(5):e2315174. doi: 10.1001/jamanetworkopen.2023.15174. Erratum in: JAMA Netw Open. 2023 Jul 3;6(7):e2324944. PMID: 37227727; PMCID: PMC10214037.
+3. Lakkapragada A, Kline A, Mutlu O, Paskov K, Chrisman B, Stockham N, Washington P, Wall D The Classification of Abnormal Hand Movement to Aid in Autism Detection: Machine Learning Study. JMIR Biomed Eng 2022;7(1):e33771
+doi: 10.2196/33771
