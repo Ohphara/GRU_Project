@@ -12,9 +12,12 @@
 >먼저"Development and Validation of a Joint Attention-Based Deep Learning System for Detection and Symptom Severity Assessment of Autism Spectrum Disorder"[1]에서는 CNN-LSTM 구조를 기반으로 TD와 ASD 아동들의 video data를 분석하여 아동들의 ASD severity를 높은 정확도로 예측하는데 성공하였습니다. 또한 "The Classification of Abnormal Hand Movement to Aid in Autism Detection: Machine Learning Study"[3]에서는 Google mediapipe를 기반으로, ASD 아동들에게서 흔히 보여지는 이상행동인 Hand Clapping을 detect하는데 성공하였습니다. 이러한 선행 연구들을 바탕으로 머신러닝을 기반으로한 ASD 아동들의 성취도 평가와 이상행동 탐지의 가능성을 확인하였고 이를 Creamo에서도 사용할 수 있게 만들고자 개발을 시작하였습니다.
 
 ## 연구 방법
->본 연구는 Google Mediapipe의 Hand Gesture & Pose Detection을 통해 몸의 landmark들의 좌표 데이터를 input으로 받아서 .json파일로 DB에 저장해놓았다는 것을 전제로 하고 진행하였습니다. 앞선 연구들에선 비디오 분석에 Long Short-Term Memory(LSTM)을 활용하였으나, 본 연구에서는 LSTM과 성능은 비슷하면서도 더 가벼운 모델인 Gated Recurrent Unit(GRU)을 사용하였습니다.
+>본 연구는 Google Mediapipe의 Hand Gesture & Pose Detection을 통해 몸의 landmark들의 좌표 데이터를 input으로 받아서 .json파일로 DB에 저장해놓았다는 것을 전제로 하고 진행하였습니다. 앞선 연구들에선 비디오 분석에 Long Short-Term Memory(LSTM)을 활용하였으나, 본 연구에서는 LSTM과 성능은 비슷하면서도 더 가벼운 모델인 Gated Recurrent Unit(GRU)을 사용하여 진행하였습니다.
+>
+## 프로그램 Architecture
 
-## 프로그램 구조
+
+## 프로그램 Tree구조도
     /YourProjectPATH
     │
     ├── main.py
