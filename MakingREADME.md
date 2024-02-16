@@ -85,6 +85,52 @@ for hm_number in range(1, 9):
                     create_json_file(root_dir, videocliptype, i, userid, hand, landmarkname)
 ```
 
+#### Inference 실행을 위한 dummy data를 만드는 코드는 다음과 같다
+
+```
+import os
+import json
+import torch
+import random
+
+# 함수: JSON 파일 생성
+def create_json_file(root_dir, videocliptype, clipnumber, userid, hand, landmarkname):
+    # 파일 이름 생성
+    file_name = f"{videocliptype}_{clipnumber}_{userid}_{hand}_{landmarkname}.json"
+    file_path = os.path.join(root_dir, file_name)
+
+    # (50000, 3) 모양의 랜드마크 데이터 생성 (평균=0, 표준편차=1의 정규분포)
+    landmark_data = torch.randn(50000, 3)
+
+    # JSON 파일에 랜드마크 데이터 저장
+    with open(file_path, 'w') as file:
+        json.dump(landmark_data.tolist(), file)
+
+# 랜드마크 이름 목록
+landmark_names = [
+    "hand_wrist", "thumb_cmc", "thumb_mcp", "thumb_ip", "thumb_tip",
+    "indexfinger_mcp", "indexfinger_pip", "indexfinger_dip", "indexfinger_tip",
+    "middlefinger_mcp", "middlefinger_pip", "middlefinger_dip", "middlefinger_tip",
+    "ringfinger_mcp", "ringfinger_pip", "ringfinger_dip", "ringfinger_tip",
+    "pinkyfinger_mcp", "pinkyfinger_pip", "pinkyfinger_dip", "pinkyfinger_tip"
+]
+
+# 루트 디렉토리
+root_dir_template = r"C:/Users/PJO/23kist/GRU_project_kist_PiljunOh/DB/TDvideos"
+
+# 클립 타입, HM 넘버, 클립 번호에 따라 파일 생성
+for clipnumber in range(1, 6):  # Modified to iterate over clip numbers from 1 to 5
+    videocliptype = f"TDVideos"
+    root_dir = root_dir_template
+    
+    # 같은 HM 넘버 내에서 같은 클립 넘버에 대해 같은 사용자 ID를 유지
+    userid = str(random.randint(100000, 999999))  # 6자리 숫자 랜덤 생성
+    for hand in ["left", "right"]:
+        for landmarkname in landmark_names:
+                create_json_file(root_dir, videocliptype, clipnumber, userid, hand, landmarkname)
+```
+
+#### 이제 프로젝트 내 코드들의 경로를 본인의 프로젝트 경로에 알맞게 수정해주면 코드를 실행시킬 준비가 끝났다
 
 
 ## 3. Execution
