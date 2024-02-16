@@ -9,7 +9,7 @@
 Autism Spectrum Disorder(ASD)은 전 세계적으로 빠르게 증가하는 발달 장애로 조기 치료와 개입을 통해 그 증세를 크게 완화시키는 것이 가능하다[1]. 이에 따라, ASD 아동 대상 다감각 치료 프로그램에 대한 평가와 이상행동 탐지에 대한 필요성이 높아지고 있다. 그러나 ASD 아동에 대한 조기 진단과 치료에는 많은 시간이 소요되고, 환자 수의 증가와 진단 및 치료를 담당할 전문인력의 부족이 맞물려 많은 ASD 아동들이 제때 적절한 조치를 받지 못하는 상황으로 이어졌다. 이러한 배경 속에서 ASD의 진단 및 치료 인력의 부족 문제를 해결하고자 머신 러닝을 ASD 아동의 진단에 사용하려는 선행연구들이 있었고 이들을 바탕으로 연구를 진행하였다.
 
   
-먼저"Development and Validation of a Joint Attention-Based Deep Learning System for Detection and Symptom Severity Assessment of Autism Spectrum Disorder"[1]에서는 CNN-LSTM 구조를 기반으로 TD와 ASD 아동들의 video data를 분석하여 아동들의 ASD severity를 높은 정확도로 예측하는데 성공했다. 또한 "The Classification of Abnormal Hand Movement to Aid in Autism Detection: Machine Learning Study"[3]에서는 Google mediapipe를 기반으로, ASD 아동들에게서 흔히 보여지는 이상행동인 Hand Clapping을 detect하는데 성공했다. 이러한 선행 연구들을 바탕으로 머신러닝을 기반으로한 ASD 아동들의 성취도 평가와 이상행동 탐지의 가능성을 확인하였고 이를 Creamo에서도 사용할 수 있게 만들고자 개발을 시작하였다.  
+"Development and Validation of a Joint Attention-Based Deep Learning System for Detection and Symptom Severity Assessment of Autism Spectrum Disorder"[1]에서는 CNN-LSTM 구조를 기반으로 TD와 ASD 아동들의 video data를 분석하여 아동들의 ASD severity를 높은 정확도로 예측하는데 성공했다. 또한 "The Classification of Abnormal Hand Movement to Aid in Autism Detection: Machine Learning Study"[3]에서는 Google mediapipe를 기반으로, ASD 아동들에게서 흔히 보여지는 이상행동인 Hand Clapping을 detect하는데 성공했다. 이러한 선행 연구들을 바탕으로 머신러닝을 기반으로한 ASD 아동들의 성취도 평가와 이상행동 탐지의 가능성을 확인하였고 이를 Creamo에서도 사용할 수 있게 만들고자 개발을 시작하였다.  
 
 ## 3) 연구 방법
 본 연구는 Google Mediapipe의 Hand Gesture & Pose Detection을 통해 몸의 landmark들의 좌표 데이터를 input으로 받아서 .json파일로 DB에 저장해놓았다는 것을 전제로 하고 진행하였습니다. 앞선 연구들에선 비디오 분석에 Long Short-Term Memory(LSTM)을 활용하였으나, 본 연구에서는 LSTM과 성능은 비슷하면서도 더 가벼운 모델인 Gated Recurrent Unit(GRU)을 사용하여 진행했다.  
@@ -65,19 +65,18 @@ Autism Spectrum Disorder(ASD)은 전 세계적으로 빠르게 증가하는 발�
 
 ### (1) 가상환경 생성
 
-#### 아나콘다 프롬프트를 사용하여 가상환경을 구축할 수 있다. 이 프로젝트에서 개발에 사용한 파이썬 버전은 3.11.5이다.
 
 ```Anaconda Prompt
 conda create --name 가상환경이름 python=3.11.5
 ```
 
-이후 가상환경을 활성화 한다
+### (2) 가상환경을 활성화
 
 ```Anaconda Prompt
 conda activate 가상환경이름
 ```
 
-아래 명령을 따라 Pytorch module을 설치한다. 
+### (3) Pytorch 모듈 설치
 
 CPU 버전 : 
 ```Anaconda Prompt
@@ -88,7 +87,7 @@ GPU 버전 (CUDA 지원이 있는 경우):
 conda install pytorch torchvision torchaudio cudatoolkit=11.1 -c pytorch
 ```
 
-### (2) Model 동작 확인을 위한 dummy file 생성법
+### (4) Model 동작 확인을 위한 dummy file 생성법
 
 현재는 DB폴더에 .json 파일들이 비어있으므로, dummy data를 생성하여 모델의 동작을 확인하여야 한다.
 
@@ -186,21 +185,14 @@ for clipnumber in range(1, 6):  # Modified to iterate over clip numbers from 1 t
 ---
 
 ## 5) Execution
- ### 가상환경에서 명령 프롬프트로 진입하여 다음 명령어를 입력한다
+ ### main.py 실행
  ```Anaconda prompt
 python main.py
 ```
-##### 이후 "실행 모드를 선택하세요 (train/inference):" 라는 말이 나오면 실행하고자 하는 모드를 입력하면 된다.
-##### train 입력시: "훈련할 데이터셋 타입을 선택하세요 (hm/ps):" 라고 출력하는데 어떤 데이터셋을 훈련시킬지 선택하면 된다. ps의 경우 아직 dummy data가 없으므로 hm으로 진행하여 테스트 해볼 수 있다.
-##### hm을 입력하면 훈련이 진행되고, 훈련된 GRU의 가중치가 models에 .pth파일로 저장되게 된다.
- 
-##### inference 입력시: "분석할 비디오 타입을 선택하세요 (TD/ASD):" 라고 출력하는데, 어떤 비디오 타입을 inference할건지 선택하면 된다. asd의 경우 아직 dummy data가 없으므로 td으로 진행하여 테스트 해볼 수 있다.
-##### td를 입력하면 "분석할 클립 넘버를 선택하세요:"라고 출력하고, 1~5까지의 수를 입력하면 된다. (dummy data에서 5까지밖에 생성하지 않음)
-##### 이후 hm을 선택하면 inference를 진행하고 결과를 predict_data에 저장한다.
 ---
-## 6) Limitation  
-##### 동영상에 대한 충분한 라벨데이터를 확보하기 어려워 실제 데이터로 GRU의 성능을 테스트 해볼 기회가 없었다. 또한 실제 데이터와 비교해볼 수 없었기 때문에 inference 이후 scoring 하는 metric이 정해지지 못하였다.  
-##### 따라서 일단 Reviewer의 부담을 덜기 위해 표본 클립을 추출하는 프로그램 개발에 착수했다.  
+## 6) Limitation 
+##### 동영상에 대한 충분한 라벨데이터를 확보하기 어려워 실제 데이터로 GRU의 성능을 테스트 해볼 기회가 없었다. 또한 실제 데이터와 비교해볼 수 없었기 때문에 inference 이후 scoring 하는 metric이 정해지지 않았다
+##### 따라서 Reviewer의 부담을 덜기 위해 표본 클립을 추출하는 프로그램 개발을 진행하며 GRU 개발은 정지하였다.
 
 
 
