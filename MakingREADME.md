@@ -1,9 +1,15 @@
-# Development of GRU-Based Anomaly Detection and Assessment Techniques in a Multisensory Program for ASD Children
+# GRU 기반 이상 탐지 및 평가 기법 개발: ASD 아동의 다감각 프로그램 적용
 
-## 1. Introduction
-#### 이 프로젝트는 크리모의 ASD 아동 대상 다감각 치료 프로그램에서 학습 아동의 성취도 평가(Hand Manipulation, Pose Stability, Bilateral Hand use) 와 프로그램 중 Abnormal Behavior(Hand Flapping, Body Rocking, Sit up & Sit down,,,) Detection을 위해 개발하였다.
+## 요약
+이 연구는 Creamo의 ASD 아동 대상 다감각 치료 프로그램에서 아동의 성취도 평가(Hand Manipulation, Pose Stability, Bilateral Hand use)와 프로그램 도중 이상행동(Hand Flapping, Body Rocking, Sit up & Sit down 등) 탐지를 위해 GRU 기반의 이상 탐지 및 평가 기법을 개발하였다.
 
-### 1)Objective
+## 서론
+ASD 아동 대상 다감각 치료 프로그램에 대한 평가와 이상행동 탐지에 대한 필요성이 높아지고 있다. 이러한 배경 속에서 본 연구는 "Development and Validation of a Joint Attention-Based Deep Learning System for Detection and Symptom Severity Assessment of Autism Spectrum Disorder" 및 "The Classification of Abnormal Hand Movement to Aid in Autism Detection: Machine Learning Study" 논문을 참고하여 아동의 동영상 데이터를 분석하는 새로운 방법론을 제안한다.
+
+## 연구 방법
+본 연구에서는 Google Mediapipe의 Hand Gesture & Pose Detection에서 몸의 landmark들의 좌표 데이터를 input으로, output은 동영상에서의 성취도 평가 동작과 이상행동을 추출하는 것으로 설정하였다. 또한, 연구를 위한 프로젝트 구조는 아래와 같다.
+
+
 
 ### 2)Project Structure
 ```
