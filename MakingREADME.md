@@ -1,20 +1,21 @@
 # GRU 기반 이상 탐지 및 평가 기법 개발: ASD 아동의 다감각 프로그램 적용
 
-## 요약
+## 1 )요약
   
 이 연구는 Creamo의 ASD 아동 대상 다감각 치료 프로그램에서 아동의 성취도 평가(Hand Manipulation, Pose Stability, Bilateral Hand use)와 프로그램 도중 이상행동(Hand Flapping, Body Rocking, Sit up & Sit down 등) 탐지를 위해 GRU 기반의 이상 탐지 및 평가 기법을 개발을 목적으로 진행하였다.
 
-## 서론
+## 2) 서론
 
 Autism Spectrum Disorder(ASD)은 전 세계적으로 빠르게 증가하는 발달 장애로 조기 치료와 개입을 통해 그 증세를 크게 완화시키는 것이 가능하다[1]. 이에 따라, ASD 아동 대상 다감각 치료 프로그램에 대한 평가와 이상행동 탐지에 대한 필요성이 높아지고 있다. 그러나 ASD 아동에 대한 조기 진단과 치료에는 많은 시간이 소요되고, 환자 수의 증가와 진단 및 치료를 담당할 전문인력의 부족이 맞물려 많은 ASD 아동들이 제때 적절한 조치를 받지 못하는 상황으로 이어졌다. 이러한 배경 속에서 ASD의 진단 및 치료 인력의 부족 문제를 해결하고자 머신 러닝을 ASD 아동의 진단에 사용하려는 선행연구들이 있었고 이들을 바탕으로 연구를 진행하였다.
 
   
 먼저"Development and Validation of a Joint Attention-Based Deep Learning System for Detection and Symptom Severity Assessment of Autism Spectrum Disorder"[1]에서는 CNN-LSTM 구조를 기반으로 TD와 ASD 아동들의 video data를 분석하여 아동들의 ASD severity를 높은 정확도로 예측하는데 성공했다. 또한 "The Classification of Abnormal Hand Movement to Aid in Autism Detection: Machine Learning Study"[3]에서는 Google mediapipe를 기반으로, ASD 아동들에게서 흔히 보여지는 이상행동인 Hand Clapping을 detect하는데 성공했다. 이러한 선행 연구들을 바탕으로 머신러닝을 기반으로한 ASD 아동들의 성취도 평가와 이상행동 탐지의 가능성을 확인하였고 이를 Creamo에서도 사용할 수 있게 만들고자 개발을 시작하였다.  
 
-## 연구 방법
+## 3) 연구 방법
 본 연구는 Google Mediapipe의 Hand Gesture & Pose Detection을 통해 몸의 landmark들의 좌표 데이터를 input으로 받아서 .json파일로 DB에 저장해놓았다는 것을 전제로 하고 진행하였습니다. 앞선 연구들에선 비디오 분석에 Long Short-Term Memory(LSTM)을 활용하였으나, 본 연구에서는 LSTM과 성능은 비슷하면서도 더 가벼운 모델인 Gated Recurrent Unit(GRU)을 사용하여 진행했다.  
 
-## 프로그램 구성
+## 4) 프로그램 구성
+### (1) Architecture 
  ### 먼저 mediapipe로부터 추출된 landmark들의 json파일들로부터 delta dataset을 생성
 ![json파일로부터 dataset load](images/architecture1.jpg)  
  ### 이후 delta dataset에 라벨링을 한 이후 이를 GRU 모델 Train에 사용
@@ -24,7 +25,7 @@ Autism Spectrum Disorder(ASD)은 전 세계적으로 빠르게 증가하는 발�
  ### 이후 도출된 결과를 predict_data에 json파일 형태로 저장
 
 
-## 프로그램 Tree구조도
+### (2) 프로그램 Tree구조도
     /YourProjectPATH
     │
     ├── main.py
@@ -43,7 +44,7 @@ Autism Spectrum Disorder(ASD)은 전 세계적으로 빠르게 증가하는 발�
     │ ├── TDvideos
     │ └── ASDvideos
 
-## 프로그램 구조 설명
+## (3)프로그램 구조 설명
 
 #### - `main.py`: 프로그램의 진입점입니다. 이 파일을 실행하여 모델 훈련 및 추론을 시작합니다.  
 #### - `config.py`: 프로그램 설정을 관리하는 파일입니다. 여기에서 경로, 하이퍼파라미터 등의 설정을 변경할 수 있습니다.  
@@ -59,10 +60,10 @@ Autism Spectrum Disorder(ASD)은 전 세계적으로 빠르게 증가하는 발�
 ####   - `AssessmentClip`, `DetectionClip`, `TDvideos`, `ASDvideos`: 각각 다른 종류의 비디오 클립들을 저장하는 폴더입니다. 
 
 
-## 설치 및 실행 방법
+## 4)설치 및 실행 방법
 본 연구를 진행하기 위한 환경 구축 및 실행 방법은 아래와 같다. 
 
-### 1) 가상환경 생성
+### (1) 가상환경 생성
 
 #### 아나콘다 프롬프트를 사용하여 가상환경을 구축할 수 있다. 이 프로젝트에서 개발에 사용한 파이썬 버전은 3.11.5이다.
 
@@ -87,7 +88,7 @@ GPU 버전 (CUDA 지원이 있는 경우):
 conda install pytorch torchvision torchaudio cudatoolkit=11.1 -c pytorch
 ```
 
-### 2) Model 동작 확인을 위한 dummy file 생성법
+### (2) Model 동작 확인을 위한 dummy file 생성법
 
 현재는 DB폴더에 .json 파일들이 비어있으므로, dummy data를 생성하여 모델의 동작을 확인하여야 한다.
 
@@ -184,7 +185,7 @@ for clipnumber in range(1, 6):  # Modified to iterate over clip numbers from 1 t
 ```
 ---
 
-## 3. Execution
+## 5) Execution
  ### 가상환경에서 명령 프롬프트로 진입하여 다음 명령어를 입력한다
  ```Anaconda prompt
 python main.py
@@ -197,7 +198,7 @@ python main.py
 ##### td를 입력하면 "분석할 클립 넘버를 선택하세요:"라고 출력하고, 1~5까지의 수를 입력하면 된다. (dummy data에서 5까지밖에 생성하지 않음)
 ##### 이후 hm을 선택하면 inference를 진행하고 결과를 predict_data에 저장한다.
 ---
-## 4. Limitation  
+## 6) Limitation  
 ##### 동영상에 대한 충분한 라벨데이터를 확보하기 어려워 실제 데이터로 GRU의 성능을 테스트 해볼 기회가 없었다. 또한 실제 데이터와 비교해볼 수 없었기 때문에 inference 이후 scoring 하는 metric이 정해지지 못하였다.  
 ##### 따라서 일단 Reviewer의 부담을 덜기 위해 표본 클립을 추출하는 프로그램 개발에 착수했다.  
 
@@ -206,7 +207,7 @@ python main.py
 
 
 ---
-## 5. Lisence
+## 7) Lisence
 ## License for PyTorch
 
 PyTorch is provided under the terms of the BSD 3-Clause License. The following is a copy of the license:
@@ -227,7 +228,7 @@ Redistribution and use in source and binary forms, with or without modification,
 THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 
-## 6. Reference
+## 8) Reference
 1. Estes A, Munson J, Rogers SJ, Greenson J, Winter J, Dawson G. Long-term outcomes of early intervention in 6-year-old children with autism spectrum disorder. J Am Acad Child Adolesc Psychiatry 2015 Jul;54(7):580-587 [FREE Full text] doi: 10.1016/j.jaac.2015.04.005 [Medline: 26088663]
 2. Ko C, Lim JH, Hong J, Hong SB, Park YR. Development and Validation of a Joint Attention-Based Deep Learning System for Detection and Symptom Severity Assessment of Autism Spectrum Disorder. JAMA Netw Open. 2023 May 1;6(5):e2315174. doi: 10.1001/jamanetworkopen.2023.15174. Erratum in: JAMA Netw Open. 2023 Jul 3;6(7):e2324944. PMID: 37227727; PMCID: PMC10214037.
 3. Lakkapragada A, Kline A, Mutlu O, Paskov K, Chrisman B, Stockham N, Washington P, Wall D The Classification of Abnormal Hand Movement to Aid in Autism Detection: Machine Learning Study. JMIR Biomed Eng 2022;7(1):e33771
