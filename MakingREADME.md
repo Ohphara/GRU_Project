@@ -9,8 +9,8 @@
 
 ##### 아나콘다 프롬프트를 사용하여 가상환경을 구축할 수 있다. 이 프로젝트에서 개발에 사용한 파이썬 버전은 3.11.5이다.
 
-'''anaconda prompt
-conda create --name 가상환경이름 python=3.11.5'''
+'''bash
+conda create --name 가상환경이름 python=3.11.5
 
 ### 2) 환경 구축
 
