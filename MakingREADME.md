@@ -1,10 +1,10 @@
 # GRU 기반 이상 탐지 및 평가 기법 개발: ASD 아동의 다감각 프로그램 적용
 
 ## 요약
-이 연구는 Creamo의 ASD 아동 대상 다감각 치료 프로그램에서 아동의 성취도 평가(Hand Manipulation, Pose Stability, Bilateral Hand use)와 프로그램 도중 이상행동(Hand Flapping, Body Rocking, Sit up & Sit down 등) 탐지를 위해 GRU 기반의 이상 탐지 및 평가 기법을 개발하였다.
+이 연구는 Creamo의 ASD 아동 대상 다감각 치료 프로그램에서 아동의 성취도 평가(Hand Manipulation, Pose Stability, Bilateral Hand use)와 프로그램 도중 이상행동(Hand Flapping, Body Rocking, Sit up & Sit down 등) 탐지를 위해 GRU 기반의 이상 탐지 및 평가 기법을 개발을 목적으로 진행하게 되었습다.
 
 ## 서론
-ASD 아동 대상 다감각 치료 프로그램에 대한 평가와 이상행동 탐지에 대한 필요성이 높아지고 있다. 이러한 배경 속에서 본 연구는 "Development and Validation of a Joint Attention-Based Deep Learning System for Detection and Symptom Severity Assessment of Autism Spectrum Disorder" 및 "The Classification of Abnormal Hand Movement to Aid in Autism Detection: Machine Learning Study" 논문을 참고하여 아동의 동영상 데이터를 분석하는 새로운 방법론을 제안한다.
+Autism Spectrum Disorder은 전 세계적으로 빠르게 증가하는 발달 장애로 조기 치료와 개입을 통해 그 증세를 크게 완화시킬 수 있습니다[1]. 이에 따라, ASD 아동 대상 다감각 치료 프로그램에 대한 평가와 이상행동 탐지에 대한 필요성이 높아지고 있습니다. 그러나 ASD 아동에 대한 조기 진단과 치료에는 많은 시간이 소요되고, 환자 수의 증가와 진단 및 치료를 담당할 전문인력의 부족이 맞물려 많은 ASD 아동들이 제때 적절한 조치를 받지 못하는 상황으로 이어졌습니다. 이러한 배경 속에서 본 연구는 "Development and Validation of a Joint Attention-Based Deep Learning System for Detection and Symptom Severity Assessment of Autism Spectrum Disorder" 및 "The Classification of Abnormal Hand Movement to Aid in Autism Detection: Machine Learning Study" 논문을 참고하여 아동의 동영상 데이터를 분석하는 새로운 방법론을 제안하게 되었습니다. 
 
 ## 연구 방법
 본 연구에서는 Google Mediapipe의 Hand Gesture & Pose Detection에서 몸의 landmark들의 좌표 데이터를 input으로, output은 동영상에서의 성취도 평가 동작과 이상행동을 추출하는 것으로 설정하였다. 또한, 연구를 위한 프로젝트 구조는 아래와 같다.
@@ -169,3 +169,6 @@ for clipnumber in range(1, 6):  # Modified to iterate over clip numbers from 1 t
 
 ---
 ## 5. Lisence
+
+## 6. Reference
+1. Estes A, Munson J, Rogers SJ, Greenson J, Winter J, Dawson G. Long-term outcomes of early intervention in 6-year-old children with autism spectrum disorder. J Am Acad Child Adolesc Psychiatry 2015 Jul;54(7):580-587 [FREE Full text] [doi: 10.1016/j.jaac.2015.04.005] [Medline: 26088663]
