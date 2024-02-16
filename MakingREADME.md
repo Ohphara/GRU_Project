@@ -185,18 +185,17 @@ for clipnumber in range(1, 6):  # Modified to iterate over clip numbers from 1 t
 ---
 
 ## 3. Execution
-> ### Train
+> ### 가상환경에서 명령 프롬프트로 진입하여 다음 명령어를 입력한다
  ```Anaconda prompt
 python main.py
 ```
-이후 train/inference 모드 선택 이후 안내되는 메시지에 맞게 진행.
-
-
-
-
-
-
-
+> ### 이후 "실행 모드를 선택하세요 (train/inference):" 라는 말이 나오면 실행하고자 하는 모드를 입력하면 된다.
+> #### train 입력시: "훈련할 데이터셋 타입을 선택하세요 (hm/ps):" 라고 출력하는데 어떤 데이터셋을 훈련시킬지 선택하면 된다. ps의 경우 아직 dummy data가 없으므로 hm으로 진행하여 테스트 해볼 수 있다.
+> #### hm을 입력하면 훈련이 진행되고, 훈련된 GRU의 가중치가 models에 .pth파일로 저장되게 된다.
+> 
+> #### inference 입력시: "분석할 비디오 타입을 선택하세요 (TD/ASD):" 라고 출력하는데, 어떤 비디오 타입을 inference할건지 선택하면 된다. asd의 경우 아직 dummy data가 없으므로 td으로 진행하여 테스트 해볼 수 있다.
+> #### td를 입력하면 "분석할 클립 넘버를 선택하세요:"라고 출력하고, 1~5까지의 수를 입력하면 된다. (dummy data에서 5까지밖에 생성하지 않음)
+> #### 이후 hm을 선택하면 inference를 진행하고 결과를 predict_data에 저장한다.
 ---
 ## 4. Limitation
 
