@@ -43,7 +43,21 @@
     │ ├── TDvideos
     │ └── ASDvideos
 
-    
+## 프로그램 구조 설명
+
+#### - `main.py`: 프로그램의 진입점입니다. 이 파일을 실행하여 모델 훈련 및 추론을 시작합니다.
+#### - `config.py`: 프로그램 설정을 관리하는 파일입니다. 여기에서 경로, 하이퍼파라미터 등의 설정을 변경할 수 있습니다.
+#### - `requirements.txt`: 프로그램 실행에 필요한 파이썬 라이브러리와 그 버전이 명시되어 있습니다. 이를 통해 필요한 라이브러리를 한번에 설치할 수 있습니다.
+
+#### - `src` 폴더: 소스 코드를 관리하는 폴더입니다.
+####   - `data_loader.py`: 데이터 로딩 및 전처리를 담당하는 파일입니다. 입력 데이터를 모델에 적합한 형태로 변환합니다.
+####   - `model_builder.py`: GRU 기반의 모델을 생성하는 파일입니다. 모델의 구조를 정의하고 훈련 방법을 설정합니다.
+####   - `train.py`: 모델을 훈련시키는 파일입니다. 설정된 에포크 수만큼 훈련을 반복하며, 각 에포크마다 훈련 결과를 출력합니다.
+####   - `inference.py`: 훈련된 모델을 이용해 새로운 데이터에 대한 추론을 수행하는 파일입니다.
+
+#### - `DB` 폴더: 데이터를 저장하는 폴더입니다.
+####   - `AssessmentClip`, `DetectionClip`, `TDvideos`, `ASDvideos`: 각각 다른 종류의 비디오 클립들을 저장하는 폴더입니다. 
+
 
 ## 설치 및 실행 방법
 본 연구를 진행하기 위한 환경 구축 및 실행 방법은 아래와 같다. 
@@ -171,6 +185,12 @@ for clipnumber in range(1, 6):  # Modified to iterate over clip numbers from 1 t
 ---
 
 ## 3. Execution
+> ### Train
+ ```Anaconda prompt
+python main.py
+```
+이후 train/inference 모드 선택 이후 안내되는 메시지에 맞게 진행.
+
 
 
 
@@ -178,7 +198,7 @@ for clipnumber in range(1, 6):  # Modified to iterate over clip numbers from 1 t
 
 
 ---
-## 4. Usage Example
+## 4. Limitation
 
 
 
@@ -186,6 +206,25 @@ for clipnumber in range(1, 6):  # Modified to iterate over clip numbers from 1 t
 
 ---
 ## 5. Lisence
+## License for PyTorch
+
+PyTorch is provided under the terms of the BSD 3-Clause License. The following is a copy of the license:
+
+BSD 3-Clause License
+
+Copyright (c) 2018, The PyTorch Authors
+All rights reserved.
+
+Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+
+1. Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+
+2. Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+
+3. Neither the name of the copyright holder nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
 
 ## 6. Reference
 1. Estes A, Munson J, Rogers SJ, Greenson J, Winter J, Dawson G. Long-term outcomes of early intervention in 6-year-old children with autism spectrum disorder. J Am Acad Child Adolesc Psychiatry 2015 Jul;54(7):580-587 [FREE Full text] doi: 10.1016/j.jaac.2015.04.005 [Medline: 26088663]
