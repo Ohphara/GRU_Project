@@ -9,23 +9,28 @@
 
 ##### 아나콘다 프롬프트를 사용하여 가상환경을 구축할 수 있다. 이 프로젝트에서 개발에 사용한 파이썬 버전은 3.11.5이다.
 
-```bash
+```Anaconda Prompt
 conda create --name 가상환경이름 python=3.11.5
 ```
 
-### 2) 환경 구축
-
-##### 가상환경을 구축했다면 다음은 개발환경을 구축해야한다. 먼저 프로젝트 폴더 위치로 이동하자
+##### 이후 가상환경을 활성화 한다
 
 ```Anaconda Prompt
-cd YourProjectPATH
+conda activate 가상환경이름
 ```
 
-##### conda install 
+##### 아래 명령을 따라 Pytorch module을 설치한다. 
 
-### 2) pip torch
+##### CPU 버전 : 
+```Anaconda Prompt
+conda install pytorch torchvision torchaudio cpuonly -c pytorch
+```
+##### GPU 버전 (CUDA 지원이 있는 경우):
+```Anaconda Prompt
+conda install pytorch torchvision torchaudio cudatoolkit=11.1 -c pytorch
+```
 
-### 3) Model 동작 확인을 위한 dummy file 생성법
+### 2) Model 동작 확인을 위한 dummy file 생성법
 
 ## 3. Execution
 
