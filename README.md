@@ -16,13 +16,13 @@ Autism Spectrum Disorder(ASD)은 전 세계적으로 빠르게 증가하는 발�
 
 ## 4) 프로그램 구성
 ### (1) Architecture 
- ### mediapipe로부터 추출된 landmark들의 json파일들로부터 delta dataset을 생성
+ #### mediapipe로부터 추출된 landmark들의 json파일들로부터 delta dataset을 생성
 ![json파일로부터 dataset load](images/architecture1.jpg)  
- ### delta dataset에 라벨링을 한 이후 이를 GRU 모델 Train에 사용
+ #### delta dataset에 라벨링을 한 이후 이를 GRU 모델 Train에 사용
 ![GRU 모델 train](images/architecture2.jpg)  
- ### 훈련된 GRU 모델을 바탕으로 대상 비디오에 대해 window를 움직여가며 inference 결과를 도출
+ #### 훈련된 GRU 모델을 바탕으로 대상 비디오에 대해 window를 움직여가며 inference 결과를 도출
 ![GRU 모델 inference](images/architecture3.jpg)  
- ### 도출된 결과를 predict_data에 json파일 형태로 저장
+ ###3 도출된 결과를 predict_data에 json파일 형태로 저장
 
 
 ### (2) 프로그램 Tree구조도
@@ -185,7 +185,7 @@ for clipnumber in range(1, 6):  # Modified to iterate over clip numbers from 1 t
 ---
 
 ## 6) Execution
- ### main.py 실행
+ #### main.py 실행
  ```Anaconda prompt
 python main.py
 ```
@@ -200,7 +200,7 @@ python main.py
 
 ---
 ## 8) Lisence
-## License for PyTorch
+#### License for PyTorch
 
 PyTorch is provided under the terms of the BSD 3-Clause License. The following is a copy of the license:
 
