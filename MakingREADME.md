@@ -2,26 +2,26 @@
 
 ## 요약
   
-이 연구는 Creamo의 ASD 아동 대상 다감각 치료 프로그램에서 아동의 성취도 평가(Hand Manipulation, Pose Stability, Bilateral Hand use)와 프로그램 도중 이상행동(Hand Flapping, Body Rocking, Sit up & Sit down 등) 탐지를 위해 GRU 기반의 이상 탐지 및 평가 기법을 개발을 목적으로 진행하였습니다.  
+이 연구는 Creamo의 ASD 아동 대상 다감각 치료 프로그램에서 아동의 성취도 평가(Hand Manipulation, Pose Stability, Bilateral Hand use)와 프로그램 도중 이상행동(Hand Flapping, Body Rocking, Sit up & Sit down 등) 탐지를 위해 GRU 기반의 이상 탐지 및 평가 기법을 개발을 목적으로 진행하였다.
 
 ## 서론
 
-Autism Spectrum Disorder(ASD)은 전 세계적으로 빠르게 증가하는 발달 장애로 조기 치료와 개입을 통해 그 증세를 크게 완화시킬 수 있습니다[1]. 이에 따라, ASD 아동 대상 다감각 치료 프로그램에 대한 평가와 이상행동 탐지에 대한 필요성이 높아지고 있습니다. 그러나 ASD 아동에 대한 조기 진단과 치료에는 많은 시간이 소요되고, 환자 수의 증가와 진단 및 치료를 담당할 전문인력의 부족이 맞물려 많은 ASD 아동들이 제때 적절한 조치를 받지 못하는 상황으로 이어졌습니다. 이러한 배경 속에서 ASD의 진단 및 치료 인력의 부족 문제를 해결하고자 머신 러닝을 ASD 아동의 진단에 사용하려는 선행연구들이 있었고 이들을 바탕으로 연구를 진행하게 되었습니다.  
+Autism Spectrum Disorder(ASD)은 전 세계적으로 빠르게 증가하는 발달 장애로 조기 치료와 개입을 통해 그 증세를 크게 완화시키는 것이 가능하다[1]. 이에 따라, ASD 아동 대상 다감각 치료 프로그램에 대한 평가와 이상행동 탐지에 대한 필요성이 높아지고 있다. 그러나 ASD 아동에 대한 조기 진단과 치료에는 많은 시간이 소요되고, 환자 수의 증가와 진단 및 치료를 담당할 전문인력의 부족이 맞물려 많은 ASD 아동들이 제때 적절한 조치를 받지 못하는 상황으로 이어졌다. 이러한 배경 속에서 ASD의 진단 및 치료 인력의 부족 문제를 해결하고자 머신 러닝을 ASD 아동의 진단에 사용하려는 선행연구들이 있었고 이들을 바탕으로 연구를 진행하였다.
 
   
-먼저"Development and Validation of a Joint Attention-Based Deep Learning System for Detection and Symptom Severity Assessment of Autism Spectrum Disorder"[1]에서는 CNN-LSTM 구조를 기반으로 TD와 ASD 아동들의 video data를 분석하여 아동들의 ASD severity를 높은 정확도로 예측하는데 성공하였습니다. 또한 "The Classification of Abnormal Hand Movement to Aid in Autism Detection: Machine Learning Study"[3]에서는 Google mediapipe를 기반으로, ASD 아동들에게서 흔히 보여지는 이상행동인 Hand Clapping을 detect하는데 성공하였습니다. 이러한 선행 연구들을 바탕으로 머신러닝을 기반으로한 ASD 아동들의 성취도 평가와 이상행동 탐지의 가능성을 확인하였고 이를 Creamo에서도 사용할 수 있게 만들고자 개발을 시작하였습니다.  
+먼저"Development and Validation of a Joint Attention-Based Deep Learning System for Detection and Symptom Severity Assessment of Autism Spectrum Disorder"[1]에서는 CNN-LSTM 구조를 기반으로 TD와 ASD 아동들의 video data를 분석하여 아동들의 ASD severity를 높은 정확도로 예측하는데 성공했다. 또한 "The Classification of Abnormal Hand Movement to Aid in Autism Detection: Machine Learning Study"[3]에서는 Google mediapipe를 기반으로, ASD 아동들에게서 흔히 보여지는 이상행동인 Hand Clapping을 detect하는데 성공했다. 이러한 선행 연구들을 바탕으로 머신러닝을 기반으로한 ASD 아동들의 성취도 평가와 이상행동 탐지의 가능성을 확인하였고 이를 Creamo에서도 사용할 수 있게 만들고자 개발을 시작하였다.  
 
 ## 연구 방법
-본 연구는 Google Mediapipe의 Hand Gesture & Pose Detection을 통해 몸의 landmark들의 좌표 데이터를 input으로 받아서 .json파일로 DB에 저장해놓았다는 것을 전제로 하고 진행하였습니다. 앞선 연구들에선 비디오 분석에 Long Short-Term Memory(LSTM)을 활용하였으나, 본 연구에서는 LSTM과 성능은 비슷하면서도 더 가벼운 모델인 Gated Recurrent Unit(GRU)을 사용하여 진행하였습니다.  
+본 연구는 Google Mediapipe의 Hand Gesture & Pose Detection을 통해 몸의 landmark들의 좌표 데이터를 input으로 받아서 .json파일로 DB에 저장해놓았다는 것을 전제로 하고 진행하였습니다. 앞선 연구들에선 비디오 분석에 Long Short-Term Memory(LSTM)을 활용하였으나, 본 연구에서는 LSTM과 성능은 비슷하면서도 더 가벼운 모델인 Gated Recurrent Unit(GRU)을 사용하여 진행했다.  
 
 ## 프로그램 구성
- ### 먼저 mediapipe로부터 추출된 landmark들의 json파일들로부터 delta dataset을 생성합니다.
+ ### 먼저 mediapipe로부터 추출된 landmark들의 json파일들로부터 delta dataset을 생성
 ![json파일로부터 dataset load](images/architecture1.jpg)  
- ### 이후 delta dataset에 라벨링을 한 이후 이를 GRU 모델 Train에 사용합니다.
+ ### 이후 delta dataset에 라벨링을 한 이후 이를 GRU 모델 Train에 사용
 ![GRU 모델 train](images/architecture2.jpg)  
- ### 훈련된 GRU 모델을 바탕으로 대상 비디오에 대해 window를 움직여가며 inference 결과를 도출합니다
+ ### 훈련된 GRU 모델을 바탕으로 대상 비디오에 대해 window를 움직여가며 inference 결과를 도출
 ![GRU 모델 inference](images/architecture3.jpg)  
- ### 이후 도출된 결과를 predict_data에 json파일 형태로 저장합니다.  
+ ### 이후 도출된 결과를 predict_data에 json파일 형태로 저장
 
 
 ## 프로그램 Tree구조도
@@ -197,11 +197,9 @@ python main.py
 ##### td를 입력하면 "분석할 클립 넘버를 선택하세요:"라고 출력하고, 1~5까지의 수를 입력하면 된다. (dummy data에서 5까지밖에 생성하지 않음)
 ##### 이후 hm을 선택하면 inference를 진행하고 결과를 predict_data에 저장한다.
 ---
-## 4. Limitation
-
- #### 동영상에 대한 충분한 라벨데이터를 확보하기 어려워 실제 데이터로 GRU의 성능을 테스트 해볼 기회가 없었다. 또한 실제 데이터와 비교해볼 수 없었기 때문에 inference 이후 scoring 하는 metric이 정해지지 못하였다.
-
- #### 따라서 일단 Reviewer의 부담을 덜기 위해 표본 클립을 추출하는 프로그램 개발에 착수했다.
+## 4. Limitation  
+##### 동영상에 대한 충분한 라벨데이터를 확보하기 어려워 실제 데이터로 GRU의 성능을 테스트 해볼 기회가 없었다. 또한 실제 데이터와 비교해볼 수 없었기 때문에 inference 이후 scoring 하는 metric이 정해지지 못하였다.  
+##### 따라서 일단 Reviewer의 부담을 덜기 위해 표본 클립을 추출하는 프로그램 개발에 착수했다.  
 
 
 
